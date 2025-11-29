@@ -20,8 +20,14 @@
             sensor-bindings = <&inc_dec_kp Q W &inc_dec_kp O P &inc_dec_kp L J>;
         };
 
-        extra1 {
-            status = "reserved";
+        second_layer {
+            // status = "reserved";
+            bindings = <
+                &kp LC(Z)   &kp LC(LS(Z))   &kp LC(Q)
+                &kp P       &kp E           &kp LC(NUMBER_0)
+                &kp M       &kp LC(S)       &kp DOT
+            >;
+            sensor-bindings = <&inc_dec_kp MINUS SINGLE_QUOTE &inc_dec_kp LC(EQUAL) LC(MINUS) &inc_dec_kp LEFT_BRACKET RIGHT_BRACKET>;
         };
     };
 };
