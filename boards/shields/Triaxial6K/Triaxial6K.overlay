@@ -1,13 +1,14 @@
 #include <dt-bindings/zmk/matrix_transform.h> // Put this with the other includes at the top of your overlay
 #include <physical_layouts.dtsi>
 
+&xiao_serial { status = "disabled"; };
+
 / {
     chosen {
         zmk,physical-layout = &physical_layout0;
         // Other chosen items
     };
 
-    &xiao_serial { status = "disabled"; };
 
     physical_layout0: physical_layout_0 { // First physical layout, use different naming for other layouts
         compatible = "zmk,physical-layout";
