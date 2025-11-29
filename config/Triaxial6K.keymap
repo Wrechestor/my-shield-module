@@ -12,7 +12,7 @@
                 &kp LC(Z)   &kp LC(LS(Z))   &kp LC(Q)
                 &kp P       &kp E           &kp LC(NUMBER_0)
                 &kp M       &kp LC(S)       &kp DOT
-                &tog 3      &none           &none
+                &to 1       &none           &none
             >;
             sensor-bindings = <
                 &inc_dec_kp MINUS SINGLE_QUOTE
@@ -20,15 +20,14 @@
                 &inc_dec_kp RIGHT_BRACKET LEFT_BRACKET
             >;
         };
-
         second_layer {
             display-name = "Second";
             // status = "reserved";
             bindings = <
-                &kp Z    &kp M    &kp K
-                &kp A    &kp B    &kp C
-                &kp D    &kp E    &kp F
-                &tog 3   &none    &none
+                &kp Z       &kp M       &kp K
+                &kp A       &kp B       &kp C
+                &kp D       &kp E       &kp F
+                &to 0       &none       &none
             >;
             // sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
             sensor-bindings = <
