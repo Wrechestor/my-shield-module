@@ -2,92 +2,13 @@
 #include <physical_layouts.dtsi>
 
 / {
-    default_transform: keymap_transform0 {
-        compatible = "zmk,matrix-transform";
-        columns = <3>; // Length of the "col-gpios" array
-        rows = <3>; // Length of the "row-gpios" array
-        map = <
-        //   Key 1 | Key 2 | Key 3
-            RC(0,0) RC(0,1) RC(0,2)
-        //   Key 4 | Key 5 | Key 6
-            RC(1,0) RC(1,1) RC(1,2)
-        //   Key 7 | Key 8 | Key 9
-            RC(2,0) RC(2,1) RC(2,2)
-        >;
+    chosen {
+        zmk,physical-layout = &physical_layout0;
+        // Other chosen items
     };
-};
 
+    &xiao_serial { status = "disabled"; };
 
-
-/ {
-    kscan0: kscan0 {
-        compatible = "zmk,kscan-gpio-matrix";
-        diode-direction = "col2row";
-        wakeup-source;
-
-        col-gpios
-            = <&gpio0 29 GPIO_ACTIVE_HIGH>
-            , <&gpio0  4 GPIO_ACTIVE_HIGH>
-            , <&gpio1 12 GPIO_ACTIVE_HIGH>
-            ;
-
-        row-gpios
-            = <&gpio0  2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&gpio0  3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&gpio1 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            ;
-    };
-};
-
-
-/ {
-    first_encoder: encoder_first {
-        compatible = "alps,ec11";
-        a-gpios = <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        b-gpios = <&gpio0  5 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        steps = <24>;
-        status = "okay";
-    };
-};
-
-/ {
-    second_encoder: encoder_second {
-        compatible = "alps,ec11";
-        a-gpios = <&gpio1 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        b-gpios = <&gpio1 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        steps = <24>;
-        status = "okay";
-    };
-};
-
-/ {
-    third_encoder: encoder_third {
-        compatible = "alps,ec11";
-        a-gpios = <&gpio1 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        b-gpios = <&gpio1 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        steps = <24>;
-        status = "okay";
-    };
-};
-
-/ {
-    sensors: sensors {
-        compatible = "zmk,keymap-sensors";
-        sensors = <&first_encoder &second_encoder &third_encoder>;
-        encoder_first {
-            triggers-per-rotation = <6>;
-        };
-        encoder_second {
-            triggers-per-rotation = <12>;
-        };
-        encoder_third {
-            triggers-per-rotation = <12>;
-        };
-    };
-};
-
-
-/ {
     physical_layout0: physical_layout_0 { // First physical layout, use different naming for other layouts
         compatible = "zmk,physical-layout";
         display-name = "Default Layout";
@@ -109,13 +30,75 @@
             , <&key_physical_attrs 100 100  100  400       0     0     0>
             ;
     };
-};
 
-
-
-/ {
-    chosen {
-        zmk,physical-layout = &physical_layout0;
-        // Other chosen items
+    default_transform: keymap_transform0 {
+        compatible = "zmk,matrix-transform";
+        columns = <3>; // Length of the "col-gpios" array
+        rows = <3>; // Length of the "row-gpios" array
+        map = <
+        //   Key 1 | Key 2 | Key 3
+            RC(0,0) RC(0,1) RC(0,2)
+        //   Key 4 | Key 5 | Key 6
+            RC(1,0) RC(1,1) RC(1,2)
+        //   Key 7 | Key 8 | Key 9
+            RC(2,0) RC(2,1) RC(2,2)
+        >;
     };
+
+    kscan0: kscan0 {
+        compatible = "zmk,kscan-gpio-matrix";
+        diode-direction = "col2row";
+        wakeup-source;
+
+        col-gpios
+            = <&gpio0 29 GPIO_ACTIVE_HIGH>
+            , <&gpio0  4 GPIO_ACTIVE_HIGH>
+            , <&gpio1 12 GPIO_ACTIVE_HIGH>
+            ;
+
+        row-gpios
+            = <&gpio0  2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&gpio0  3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&gpio1 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            ;
+    };
+
+    first_encoder: encoder_first {
+        compatible = "alps,ec11";
+        a-gpios = <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&gpio0  5 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        steps = <24>;
+        status = "okay";
+    };
+
+    second_encoder: encoder_second {
+        compatible = "alps,ec11";
+        a-gpios = <&gpio1 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&gpio1 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        steps = <24>;
+        status = "okay";
+    };
+
+    third_encoder: encoder_third {
+        compatible = "alps,ec11";
+        a-gpios = <&gpio1 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&gpio1 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        steps = <24>;
+        status = "okay";
+    };
+
+    sensors: sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <&first_encoder &second_encoder &third_encoder>;
+        encoder_first {
+            triggers-per-rotation = <6>;
+        };
+        encoder_second {
+            triggers-per-rotation = <12>;
+        };
+        encoder_third {
+            triggers-per-rotation = <12>;
+        };
+    };
+
 };
