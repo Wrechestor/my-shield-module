@@ -29,6 +29,7 @@
             , <&key_physical_attrs 100 100  100  100       0     0     0>
 
             , <&key_physical_attrs  50  50  200  400       0     0     0>
+            , <&key_physical_attrs  50  50  250  400       0     0     0>
             ;
     };
 
@@ -44,7 +45,7 @@
         //   Key 7 | Key 8 | Key 9
             RC(2,0) RC(2,1) RC(2,2)
 
-            RC(3,0)
+            RC(3,0) RC(3,1)
         >;
     };
 
@@ -86,8 +87,9 @@
 
     kscan2: kscan_layersw {
         compatible = "zmk,kscan-gpio-direct";
-        input-gpios =
-            <&gpio0 9 (GPIO_ACTIVE_HIGH)>
+        input-gpios
+            = <&gpio0  9 (GPIO_ACTIVE_HIGH)>
+            , <&gpio1  7 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
         ;
     };
 
