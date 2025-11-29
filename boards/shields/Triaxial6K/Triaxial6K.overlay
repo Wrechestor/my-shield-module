@@ -39,6 +39,34 @@
 };
 
 
+/ {
+    first_encoder: encoder_first {
+        compatible = "alps,ec11";
+        a-gpios = <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&gpio0  5 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        steps = <24>;
+        status = "okay";
+    };
+};
+
+/ {
+    second_encoder: encoder_second {
+        compatible = "alps,ec11";
+        a-gpios = <&gpio1 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&gpio1 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        steps = <24>;
+        status = "okay";
+    };
+};
+
+/ {
+    sensors: sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <&first_encoder &second_encoder>;
+        triggers-per-rotation = <24>;
+    };
+};
+
 
 / {
     physical_layout0: physical_layout_0 { // First physical layout, use different naming for other layouts
