@@ -16,7 +16,7 @@
             sensor-bindings = <
                 &inc_dec_kp MINUS SINGLE_QUOTE
                 &inc_dec_kp LC(EQUAL) LC(MINUS)
-                &inc_dec_kp LEFT_BRACKET RIGHT_BRACKET
+                &inc_dec_kp RIGHT_BRACKET LEFT_BRACKET
             >;
         };
 
